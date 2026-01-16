@@ -14,7 +14,9 @@ import java.util.List;
 ///  nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE
 @Mapper(
         componentModel = "spring",
-        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+        uses = DepartmentMapper.class /// this  is used if this DTO contains another DTO as a field
+        /// to make the mapstruct know that this is a call and not a primitive datatype
 )
 public interface EmployeeMapper {
 

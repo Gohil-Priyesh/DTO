@@ -1,5 +1,6 @@
 package com.example.DTO.controller;
 
+import com.example.DTO.ApiResponse;
 import com.example.DTO.dto.EmployeeDTO;
 import com.example.DTO.entity.EmployeeEntity;
 import com.example.DTO.service.EmployeeService;
@@ -18,27 +19,21 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
-    @PostMapping("/create-without-dto")
-    public ResponseEntity<EmployeeEntity> createEmployeeController(@RequestBody EmployeeEntity employeeEntity){
-        employeeService.createEmployeeServiceWithoutDTO(employeeEntity);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
-
     @PostMapping("/create")
-    public ResponseEntity<EmployeeEntity> createEmployee(@RequestBody EmployeeDTO employee){
+    public ResponseEntity<?> createEmployee(@RequestBody EmployeeDTO employee){
 
         employeeService.createEmployeeService(employee);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(201,HttpStatus.CREATED);
     }
 
     @GetMapping("/get_all_users")
-    public ResponseEntity<List<EmployeeEntity>> getAllUsers(){
-        return new ResponseEntity<>(employeeService.getAllUsers(),HttpStatus.OK);
+    public ResponseEntity<?> getAllUsers(){
+        return ResponseEntity.ok(new ApiResponse<>(200,employeeService.getAllUsers()));
     }
 
-//    @GetMapping("/similar_name")
-//    public ResponseEntity<List<EmployeeEntity>> userWithSimilarNames(@PathParam("name")String name){
-//
-//        return new ResponseEntity<>(employeeService.findUsersByNameContaining(name),HttpStatus.OK);
-//    }
+    @GetMapping("/similar_name")
+    public ResponseEntity<?> userWithSimilarNames(@PathParam("name")String name){
+
+        return ResponseEntity.ok(new ApiResponse<>(200,employeeService.findUsersByNameContaining(name)));
+    }
 }

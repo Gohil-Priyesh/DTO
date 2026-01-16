@@ -22,5 +22,7 @@ public class EmployeeEntity {
 
     private String contact;
 
-    private String department;
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private DepartmentEntity department;
 }

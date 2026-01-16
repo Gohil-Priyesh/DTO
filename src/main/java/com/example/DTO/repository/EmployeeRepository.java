@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity,Integer> {
@@ -16,7 +17,7 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity,Integer
     List<EmployeeEntity> GetAllUsersFromDb();
 
     @Query("SELECT e FROM EmployeeEntity e WHERE e.name Like %:name% ")
-    List<EmployeeEntity> findByNameContaining(@Param("name") String name);
+    Optional<EmployeeEntity> findByNameContaining(@Param("name") String name);
 
 
     ///  this is Named query

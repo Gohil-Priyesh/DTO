@@ -15,5 +15,5 @@ public class EmployeeDTO {
 
     private String contact;
 
-    private String department;
+    private DepartmentDTO department;
 }
