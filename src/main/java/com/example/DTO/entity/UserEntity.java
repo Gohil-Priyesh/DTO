@@ -2,6 +2,9 @@ package com.example.DTO.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.query.Order;
+
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -23,4 +26,7 @@ public class UserEntity {
 
     @Column(name = "user_contact")
     private Integer userContact;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<OrderEntity> orders; // This allows you to do user.getOrders()
 }
