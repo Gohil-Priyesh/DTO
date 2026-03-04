@@ -22,6 +22,7 @@ public class EmployeeEntity {
 
     private String contact;
 
+    /// The foreign key is ALWAYS on the “many” side.
     @ManyToOne
     @JoinColumn(name = "department_id")
     private DepartmentEntity department;

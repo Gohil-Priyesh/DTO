@@ -18,13 +18,8 @@ public class DepartmentEntity {
     @Column(name = "department_name")
     private String departmentName;
 
+    /// The foreign key is ALWAYS on the “many” side.
     @OneToMany(mappedBy = "department")
     private List<EmployeeEntity> employees;
-
-
-
-
-
-
 
 }

@@ -28,6 +28,7 @@ public class OrderEntity {
     @Column(name = "total_amoung")
     private Float totalAmount;
 
+    ///  The foreign key is ALWAYS on the “many” side.
     @ManyToOne
     @JoinColumn(name = "user_id") // This creates the foreign key column in the 'orders' table
     private UserEntity user;     // Changed from List<Integer> to the Entity type
